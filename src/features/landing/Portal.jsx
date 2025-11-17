@@ -214,7 +214,7 @@ export default function Portal() {
                                         </div>
                                     </Link>
 
-                                    <Link
+                                    {/* <Link
                                         to="/employee/login"
                                         onClick={() => { setIsLoginDropdownOpen(false); closeMobileMenu(); }}
                                         className="flex items-center space-x-3 p-3 bg-white rounded-lg hover:bg-amber-100 transition"
@@ -226,7 +226,7 @@ export default function Portal() {
                                             <p className="font-bold text-gray-900 text-sm">Employee / Agent</p>
                                             <p className="text-xs text-gray-600">View assigned tickets & resolve</p>
                                         </div>
-                                    </Link>
+                                    </Link> */}
 
                                     <p className="text-xs text-amber-800 font-medium pt-2">
                                         New here? <Link to="/org/register" onClick={closeMobileMenu} className="underline hover:text-amber-600">Create organization →</Link>
