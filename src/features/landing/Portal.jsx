@@ -136,7 +136,7 @@ export default function Portal() {
                                             </div>
                                         </Link>
 
-                                        <Link
+                                        {/* <Link
                                             to="/employee/login"
                                             onClick={() => setIsLoginDropdownOpen(false)}
                                             className="flex items-center px-4 sm:px-6 py-3 sm:py-4 hover:bg-amber-50 transition-all group/item"
@@ -148,7 +148,7 @@ export default function Portal() {
                                                 <p className="font-bold text-gray-900 text-sm sm:text-base">Employee / Agent</p>
                                                 <p className="text-xs sm:text-sm text-gray-600">View assigned tickets & resolve</p>
                                             </div>
-                                        </Link>
+                                        </Link> */}
                                     </div>
 
                                     <div className="px-4 sm:px-6 py-2 sm:py-3 bg-amber-50 border-t border-amber-200">
