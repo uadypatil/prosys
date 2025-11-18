@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+/* src/index.css - Add to existing styles for consistency */
+/* @import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities'; */
+.btn-amber {
+    @apply bg-gradient-to-r from-amber-500 to-amber-600 text-white font-bold shadow-xl hover:shadow-2xl transition-all duration-300;
+}
+
+.btn-amber:hover {
+    transform: translateY(-2px);
+}
+
+/* Animated Gradient Ruler */
+@keyframes gradient-x {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient-x {
+    animation: gradient-x 6s ease infinite;
+}

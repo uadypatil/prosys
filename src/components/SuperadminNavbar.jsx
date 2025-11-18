@@ -13,7 +13,7 @@ export default function SuperadminNavbar() {
                     </div>
                     <div>
                         <h1 className="text-2xl font-black bg-gradient-to-r from-amber-600 to-amber-800 bg-clip-text text-transparent">
-                            BlinkE Superadmin
+                            HelpDeskPro Superadmin
                         </h1>
                         <p className="text-xs text-amber-600 font-semibold">Enterprise Control Panel</p>
                     </div>

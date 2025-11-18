@@ -1,127 +1,179 @@
 // src/pages/About.jsx
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, Users, Rocket, Heart, Globe, ShieldCheck, ArrowLeft } from 'lucide-react';
+import { Zap, Users, Globe, Shield, Heart, ArrowRight, Building2 } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import GlobalStyles from '../../components/GlobalStyle';
+import PortalNavbar from '../../components/PortalNavbar';
+import PortalFooter from '../../components/PortalFooter';
 
 export default function About() {
     useEffect(() => {
-        AOS.init({ duration: 1000, easing: 'ease-out-quart', once: true });
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 100,
+        });
     }, []);
 
-    return (
-        <>
-            <GlobalStyles />
-            <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-amber-50">
+    const team = [
+        { name: "Arjun Patel", role: "Founder & CEO", desc: "Ex-Zoho • Built helpdesk tools used by 500+ companies" },
+        { name: "Priya Sharma", role: "Head of Design", desc: "Ex-Freshdesk • Designed experiences for millions of users" },
+        { name: "Rahul Mehta", role: "Chief Technology Officer", desc: "Scaled systems systems handling 10M+ tickets daily" }
+    ];
 
-                <Link
-                    to="/"
-                    data-aos="fade-up"
-                    data-aos-delay="400"
-                    className="btn-amber inline-flex items-center mx-10 my-10 px-4 py-2 bg-white text-amber-600 rounded-2xl font-black text-2xl shadow-3xl"
-                >
-                    Back
-                    <ArrowLeft className="ml-4 w-8 h-8" />
-                </Link>
-                {/* Hero */}
-                <section className="pt-0 pb-10 px-6">
-                    <div className="max-w-7xl mx-auto text-center">
-                        <span className="inline-flex items-center bg-amber-100 text-amber-800 px-6 py-3 rounded-full text-lg font-bold mb-8" data-aos="fade-up">
-                            <Zap className="w-6 h-6 mr-2" /> Born in India, Built for the World
-                        </span>
-                        <h1 className="text-6xl md:text-7xl font-black mb-8" data-aos="fade-up" data-aos-delay="200">
-                            We don’t just build helpdesks.<br />
-                            <span className="bg-gradient-to-r from-amber-500 to-amber-700 bg-clip-text text-transparent">
-                                We kill ticket chaos.
-                            </span>
+    const values = [
+        { icon: Zap, title: "Speed First", desc: "Built for performance. Fast setup, faster resolutions." },
+        { icon: Shield, title: "Security by Default", desc: "Enterprise-grade encryption and compliance built-in." },
+        { icon: Heart, title: "Customer Obsessed", desc: "Real humans. Real fast. Always here when you need us." },
+        { icon: Building2, title: "Made in India", desc: "Proudly engineered in India, for teams worldwide." }
+    ];
+
+    return (
+        <div className="min-h-screen bg-gray-50">
+            <PortalNavbar />
+
+            {/* Hero */}
+            <section className="pt-24 pb-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-5 py-2 rounded-full text-sm font-semibold mb-8" data-aos="fade-up">
+                            <Globe className="w-5 h-5" />
+                            Born in India • Trusted Worldwide
+                        </div>
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight" data-aos="fade-up" data-aos-delay="100">
+                            Simple, Reliable Helpdesk Software<br />
+                            Built for Growing Teams
                         </h1>
-                        <p className="text-2xl text-gray-600 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="400">
-                            Founded by frustrated engineers who were tired of paying $99/user for bloated tools.
-                            BlinkE is the helpdesk India deserved — fast, beautiful, and actually affordable.
+                        <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                            We started HelpDeskPro because we were tired of overpriced, bloated tools that take months to set up. 
+                            So we built a modern alternative — fast, intuitive, and proudly priced in Indian Rupees.
                         </p>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                {/* Stats */}
-                <section className="py-20 bg-white">
-                    <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+            {/* Stats */}
+            <section className="py-16 bg-gray-50 border-y border-gray-200">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
                         {[
-                            { icon: Users, value: "10K+", label: "Teams Trust Us" },
-                            { icon: Rocket, value: "99.9%", label: "Uptime" },
-                            { icon: Heart, value: "4.9/5", label: "Customer Love" },
-                            { icon: Globe, value: "30+", label: "Countries" }
-                        ].map((s, i) => (
-                            <div key={i} data-aos="zoom-in" data-aos-delay={i * 150}>
-                                <s.icon className="w-16 h-16 mx-auto mb-4 text-amber-600" />
-                                <div className="text-5xl font-black text-amber-600">{s.value}</div>
-                                <div className="text-gray-600 text-xl">{s.label}</div>
+                            { value: "10,000+", label: "Teams Worldwide" },
+                            { value: "99.9%", label: "Uptime Guaranteed" },
+                            { value: "4.9/5", label: "Customer Rating" },
+                            { value: "30+", label: "Countries Served" }
+                        ].map((stat, i) => (
+                            <div key={i} data-aos="fade-up" data-aos-delay={i * 100}>
+                                <div className="text-4xl md:text-5xl font-bold text-amber-600">{stat.value}</div>
+                                <div className="text-gray-600 mt-2 text-lg">{stat.label}</div>
                             </div>
                         ))}
                     </div>
-                </section>
+                </div>
+            </section>
 
-                {/* Mission & Vision */}
-                <section className="py-28 px-6">
-                    <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
-                        <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-12 rounded-3xl border-2 border-amber-200" data-aos="fade-right">
-                            <ShieldCheck className="w-16 h-16 text-amber-600 mb-6" />
-                            <h3 className="text-4xl font-black mb-6">Our Mission</h3>
-                            <p className="text-xl text-gray-700 leading-relaxed">
-                                Make enterprise-grade IT service management accessible to every startup,
-                                agency, and SME in India — without the insane pricing or 6-month setup.
-                            </p>
-                        </div>
-                        <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-12 rounded-3xl border-2 border-amber-200" data-aos="fade-left">
-                            <Rocket className="w-16 h-16 text-amber-600 mb-6" />
-                            <h3 className="text-4xl font-black mb-6">Our Vision</h3>
-                            <p className="text-xl text-gray-700 leading-relaxed">
-                                Power 1 million Indian teams by 2030 with the fastest, most loved helpdesk on the planet.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Team */}
-                <section className="py-28 bg-gray-50">
-                    <div className="max-w-7xl mx-auto px-6 text-center">
-                        <h2 className="text-5xl font-black mb-20" data-aos="fade-up">Built by people who get it</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                            {[
-                                { name: "Arjun Patel", role: "CEO & Founder", desc: "Ex-Zoho, built helpdesks for 500+ companies" },
-                                { name: "Priya Sharma", role: "Head of Design", desc: "Made Freshdesk beautiful in 2018" },
-                                { name: "Rahul Mehta", role: "CTO", desc: "Scaled systems to 10M tickets/day" }
-                            ].map((t, i) => (
-                                <div key={i} className="bg-white p-10 rounded-3xl shadow-xl hover:shadow-2xl transition" data-aos="flip-up" data-aos-delay={i * 200}>
-                                    <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-5xl font-black text-white">
-                                        {t.name.split(' ').map(n => n[0]).join('')}
-                                    </div>
-                                    <h4 className="text-2xl font-bold">{t.name}</h4>
-                                    <p className="text-amber-600 font-semibold">{t.role}</p>
-                                    <p className="text-gray-600 mt-4">{t.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* CTA */}
-                <section className="py-32 bg-gradient-to-r from-amber-600 to-amber-700">
-                    <div className="max-w-4xl mx-auto text-center px-6">
-                        <h2 className="text-6xl font-black text-white mb-8" data-aos="zoom-in">
-                            Ready to join the revolution?
+            {/* Our Values */}
+            <section className="py-24 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-aos="fade-up">
+                            What We Stand For
                         </h2>
+                        <p className="text-xl text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                            Everything we build is guided by these core principles.
+                        </p>
+                    </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {values.map((value, i) => (
+                            <div key={i} className="text-center p-8 bg-gray-50 rounded-2xl border border-gray-200" data-aos="fade-up" data-aos-delay={i * 100}>
+                                <div className="w-16 h-16 mx-auto mb-6 bg-amber-100 rounded-2xl flex items-center justify-center">
+                                    <value.icon className="w-9 h-9 text-amber-600" />
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
+                                <p className="text-gray-600">{value.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Mission & Vision */}
+            <section className="py-24 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
+                        <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-200" data-aos="fade-right">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Mission</h3>
+                            <p className="text-lg text-gray-700 leading-relaxed">
+                                To empower every growing business — from startups to enterprises — with fast, reliable, 
+                                and affordable IT service management tools that just work.
+                            </p>
+                        </div>
+                        <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-200" data-aos="fade-left">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Vision</h3>
+                            <p className="text-lg text-gray-700 leading-relaxed">
+                                To become the most trusted helpdesk platform in India and power support teams across the globe 
+                                by 2030.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Team */}
+            <section className="py-24 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-aos="fade-up">
+                            Meet the Team Behind HelpDeskPro
+                        </h2>
+                        <p className="text-xl text-gray-600" data-aos="fade-up" data-aos-delay="100">
+                            Experienced builders who’ve lived the pain of bad support tools.
+                        </p>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-10">
+                        {team.map((member, i) => (
+                            <div key={i} className="text-center" data-aos="fade-up" data-aos-delay={i * 150}>
+                                <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-amber-500 to-amber-600 rounded-full flex items-center justify-center text-4xl font-bold text-white shadow-lg">
+                                    {member.name.split(' ').map(n => n[0]).join('')}
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
+                                <p className="text-amber-600 font-medium mt-1">{member.role}</p>
+                                <p className="text-gray-600 mt-4 text-sm">{member.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Final CTA */}
+            <section className="py-24 bg-gradient-to-r from-amber-500 to-amber-600 text-white">
+                <div className="max-w-4xl mx-auto text-center px-4">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6" data-aos="zoom-in">
+                        Ready to Simplify Your Support?
+                    </h2>
+                    <p className="text-xl mb-10 opacity-90">
+                        Join thousands of teams already saving time with HelpDeskPro
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link
-                            to="/register"
-                            className="btn-amber inline-flex items-center px-16 py-7 bg-white text-amber-600 rounded-3xl font-black text-2xl shadow-3xl"
-                            data-aos="fade-up" data-aos-delay="300"
+                            to="/org/register"
+                            className="px-10 py-4 bg-white text-amber-600 rounded-lg font-bold text-lg hover:shadow-xl transition-all inline-flex items-center justify-center"
                         >
-                            Start Free — No CC Required
+                            Start Free Trial
+                            <ArrowRight className="ml-3 w-5 h-5" />
+                        </Link>
+                        <Link
+                            to="/contact"
+                            className="px-10 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all"
+                        >
+                            Contact Us
                         </Link>
                     </div>
-                </section>
-            </div>
-        </>
+                </div>
+            </section>
+
+            <PortalFooter />
+        </div>
     );
 }
